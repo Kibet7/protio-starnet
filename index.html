@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARNET KENYA - Affordable Internet Packages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: #667eea;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .package-card.popular {
+            border-color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .package-card.popular::before {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e6b);
+        }
+
+        .package-card.popular:hover {
+            transform: scale(1.08) translateY(-5px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .package-data {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .package-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .select-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .select-button:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .loading.show {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-card.popular {
+                transform: none;
+            }
+            
+            .package-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>STARNET KENYA</h1>
+            <p>Affordable Internet Packages - Click Any Package to Purchase</p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Basic Package -->
+            <div class="package-card" data-package="2GB" data-price="49">
+                <div class="package-name">BASIC PLAN</div>
+                <div class="package-data">2GB</div>
+                <div class="package-price">Ksh 49 <span>/month</span></div>
+                <ul class="package-features">
+                    <li>2GB High-speed data</li>
+                    <li>30 days validity</li>
+                    <li>All networks</li>
+                    <li>24/7 support</li>
+                </ul>
+                <button class="select-button">SELECT PLAN</button>
+            </div>
+
+            <!-- Standard Package -->
+            <div class="package-card" data-package="10GB" data-price="199">
+                <div class="package-name">STANDARD PLAN</div>
+                <div class="package-data">10GB</div>
+                <div class="package-price">Ksh 199 <span>/month</span></div>
+                <ul class="package-features">
+                    <li>10GB High-speed data</li>
+                    <li>30 days validity</li>
+                    <li>All networks</li>
+                    <li>24/7 support</li>
+                    <li>Free 500MB social media</li>
+                </ul>
+                <button class="select-button">SELECT PLAN</button>
+            </div>
+
+            <!-- Popular Package -->
+            <div class="package-card popular" data-package="25GB" data-price="399">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="package-name">PREMIUM PLAN</div>
+                <div class="package-data">25GB</div>
+                <div class="package-price">Ksh 399 <span>/month</span></div>
+                <ul class="package-features">
+                    <li>25GB High-speed data</li>
+                    <li>30 days validity</li>
+                    <li>All networks</li>
+                    <li>24/7 priority support</li>
+                    <li>Free 2GB social media</li>
+                    <li>Unlimited streaming</li>
+                </ul>
+                <button class="select-button">SELECT PLAN</button>
+            </div>
+
+            <!-- Unlimited Package -->
+            <div class="package-card" data-package="Unlimited" data-price="999">
+                <div class="package-name">UNLIMITED PLAN</div>
+                <div class="package-data">UNLIMITED</div>
+                <div class="package-price">Ksh 999 <span>/month</span></div>
+                <ul class="package-features">
+                    <li>Unlimited high-speed data</li>
+                    <li>30 days validity</li>
+                    <li>All networks</li>
+                    <li>24/7 premium support</li>
+                    <li>Unlimited streaming</li>
+                    <li>Free router included</li>
+                    <li>Priority bandwidth</li>
+                </ul>
+                <button class="select-button">SELECT PLAN</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 STARNET KENYA. All rights reserved. | Affordable Internet for Everyone</p>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <div>Redirecting to Payment...</div>
+    </div>
+
+    <script>
+        // Add click event to all package cards and buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const packageCards = document.querySelectorAll('.package-card');
+            const selectButtons = document.querySelectorAll('.select-button');
+            const loading = document.getElementById('loading');
+
+            function redirectToPayment(packageName, price) {
+                // Show loading
+                loading.classList.add('show');
+                
+                // Simulate a brief loading period for better UX
+                setTimeout(() => {
+                    // Redirect to the payment link with package details
+                    const paymentUrl = `https://lipia-online.vercel.app/link/Starnet%20purchase?package=${encodeURIComponent(packageName)}&price=${price}`;
+                    window.location.href = paymentUrl;
+                }, 1000);
+            }
+
+            // Add click event to package cards
+            packageCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking the button (to avoid double trigger)
+                    if (!e.target.classList.contains('select-button')) {
+                        const packageName = this.getAttribute('data-package');
+                        const price = this.getAttribute('data-price');
+                        redirectToPayment(packageName, price);
+                    }
+                });
+            });
+
+            // Add click event to select buttons
+            selectButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering the card click
+                    const card = this.closest('.package-card');
+                    const packageName = card.getAttribute('data-package');
+                    const price = card.getAttribute('data-price');
+                    redirectToPayment(packageName, price);
+                });
+            });
+
+            // Add keyboard support for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const focusedElement = document.activeElement;
+                    if (focusedElement.classList.contains('package-card') || 
+                        focusedElement.classList.contains('select-button')) {
+                        focusedElement.click();
+                    }
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.package-card');
+            
+            cards.forEach((card, index) => {
+                // Add staggered animation
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
