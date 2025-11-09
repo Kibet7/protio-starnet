@@ -4,360 +4,432 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STARNET KENYA - Affordable Internet Packages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #148122;
+            --primary-dark: #0f7b0f;
+            --secondary: #25D366;
+            --accent: #FFD700;
+            --dark: #333;
+            --light: #f8f8f8;
+            --space-blue: #0a1a2a;
+            --star-yellow: #FFD700;
+            --satellite-silver: #c0c0c0;
+        }
+        
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f9b0f, #000000);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            color: #fff;
+            line-height: 1.6;
         }
-
+        
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            padding: 20px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .package-card {
-            background: white;
-            border-radius: 15px;
+            background-color: #ffffff;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 3px solid transparent;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 95%;
+            color: var(--dark);
+            margin: 20px 0;
             position: relative;
             overflow: hidden;
         }
-
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: #667eea;
-        }
-
-        .package-card::before {
-            content: '';
+        
+        .container::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .package-card.popular {
-            border-color: #ff6b6b;
-            transform: scale(1.05);
-        }
-
-        .package-card.popular::before {
-            background: linear-gradient(90deg, #ff6b6b, #ff8e6b);
-        }
-
-        .package-card.popular:hover {
-            transform: scale(1.08) translateY(-5px);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: #ff6b6b;
-            color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .package-name {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .package-data {
-            font-size: 2.5rem;
-            color: #667eea;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .package-price {
-            font-size: 2rem;
-            color: #764ba2;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .package-price span {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .package-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-        }
-
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-
-        .package-features li::before {
-            content: '✓';
-            color: #4CAF50;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .select-button {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .header-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #148122, #25D366, #FFD700, #25D366, #148122);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
+        
+        h1::before {
+            content: "🛰️";
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(5px); }
+        }
+        
+        .satellite {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: orbit 6s linear infinite;
+        }
+        
+        @keyframes orbit {
+            from { transform: translateY(-50%) rotate(0deg) translateX(20px) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg) translateX(20px) rotate(-360deg); }
+        }
+        
+        .payment-info {
+            margin-bottom: 25px;
+            font-size: 18px;
             font-weight: bold;
+            color: #555;
+            background: #e0f7da;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .packages-container {
+            margin: 20px 0;
+        }
+        
+        .package-btn {
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
             cursor: pointer;
+            margin: 12px 0;
+            width: 100%;
+            font-weight: bold;
             transition: all 0.3s ease;
-        }
-
-        .select-button:hover {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            transform: translateY(-2px);
-        }
-
-        .footer {
-            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background: var(--primary);
             color: white;
-            margin-top: 40px;
-            padding: 20px;
-            opacity: 0.8;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .loading {
+        
+        .package-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: var(--primary-dark);
+        }
+        
+        .package-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .package-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .package-btn:hover::before {
+            left: 100%;
+        }
+        
+        .inquiry {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #444;
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .email:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        /* Loading spinner styles */
+        .loading-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
             color: white;
-            font-size: 1.5rem;
+            font-size: 18px;
+            margin-top: 15px;
+            text-align: center;
         }
-
-        .loading.show {
+        
+        .loading-text::after {
+            content: "...";
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60%, 100% { content: "..."; }
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1001;
             display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: 0.3s;
         }
-
-        @media (max-width: 768px) {
-            .packages-grid {
-                grid-template-columns: 1fr;
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
+        .toast i {
+            font-size: 20px;
+            color: var(--accent);
+        }
+        
+        /* Enhanced styles from previous design */
+        .package-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+        
+        .package-btn:hover {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px rgba(20, 129, 34, 0.4);
+        }
+        
+        .package-btn span:first-child {
+            text-align: left;
+            flex: 1;
+        }
+        
+        .package-btn span:last-child {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            min-width: 70px;
+        }
+        
+        .container {
+            background: linear-gradient(to bottom, #ffffff, #f0f9f0);
+            border: 1px solid rgba(20, 129, 34, 0.2);
+        }
+        
+        .payment-info {
+            background: linear-gradient(to right, #e0f7da, #c8f0c1);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .inquiry {
+            background: linear-gradient(to right, #f8f8f8, #e8f5e8);
+            border: 1px solid rgba(20, 129, 34, 0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
             }
             
-            .package-card.popular {
-                transform: none;
+            h1 {
+                font-size: 24px;
             }
             
-            .package-card.popular:hover {
-                transform: translateY(-10px);
+            h1::before, .satellite {
+                font-size: 20px;
+            }
+            
+            .package-btn {
+                padding: 12px;
+                font-size: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="header-wrapper">
             <h1>STARNET KENYA</h1>
-            <p>Affordable Internet Packages - Click Any Package to Purchase</p>
+            <div class="satellite">🛰️</div>
+        </div>
+        <div class="payment-info">Affordable Internet Packages <i>(Available on all networks)</i></div>
+        
+        <div class="packages-container">
+            <button class="package-btn" onclick="redirectToPayment('1 Day - 2GB', 49)">
+                <span>1 Day - 2GB</span>
+                <span>Ksh 49</span>
+            </button>
+            <button class="package-btn" onclick="redirectToPayment('3 Days - 5GB', 59)">
+                <span>3 Days - 5GB</span>
+                <span>Ksh 59</span>
+            </button>
+            <button class="package-btn" onclick="redirectToPayment('7 Days - 10GB', 69)">
+                <span>7 Days - 10GB</span>
+                <span>Ksh 69</span>
+            </button>
+            <button class="package-btn" onclick="redirectToPayment('14 Days - 25GB', 79)">
+                <span>14 Days - 25GB</span>
+                <span>Ksh 79</span>
+            </button>
+            <button class="package-btn" onclick="redirectToPayment('30 Days - Unlimited', 99)">
+                <span>30 Days - Unlimited</span>
+                <span>Ksh 99</span>
+            </button>
         </div>
 
-        <div class="packages-grid">
-            <!-- Basic Package -->
-            <div class="package-card" data-package="2GB" data-price="49">
-                <div class="package-name">BASIC PLAN</div>
-                <div class="package-data">2GB</div>
-                <div class="package-price">Ksh 49 <span>/month</span></div>
-                <ul class="package-features">
-                    <li>2GB High-speed data</li>
-                    <li>30 days validity</li>
-                    <li>All networks</li>
-                    <li>24/7 support</li>
-                </ul>
-                <button class="select-button">SELECT PLAN</button>
-            </div>
-
-            <!-- Standard Package -->
-            <div class="package-card" data-package="10GB" data-price="199">
-                <div class="package-name">STANDARD PLAN</div>
-                <div class="package-data">10GB</div>
-                <div class="package-price">Ksh 199 <span>/month</span></div>
-                <ul class="package-features">
-                    <li>10GB High-speed data</li>
-                    <li>30 days validity</li>
-                    <li>All networks</li>
-                    <li>24/7 support</li>
-                    <li>Free 500MB social media</li>
-                </ul>
-                <button class="select-button">SELECT PLAN</button>
-            </div>
-
-            <!-- Popular Package -->
-            <div class="package-card popular" data-package="25GB" data-price="399">
-                <div class="popular-badge">MOST POPULAR</div>
-                <div class="package-name">PREMIUM PLAN</div>
-                <div class="package-data">25GB</div>
-                <div class="package-price">Ksh 399 <span>/month</span></div>
-                <ul class="package-features">
-                    <li>25GB High-speed data</li>
-                    <li>30 days validity</li>
-                    <li>All networks</li>
-                    <li>24/7 priority support</li>
-                    <li>Free 2GB social media</li>
-                    <li>Unlimited streaming</li>
-                </ul>
-                <button class="select-button">SELECT PLAN</button>
-            </div>
-
-            <!-- Unlimited Package -->
-            <div class="package-card" data-package="Unlimited" data-price="999">
-                <div class="package-name">UNLIMITED PLAN</div>
-                <div class="package-data">UNLIMITED</div>
-                <div class="package-price">Ksh 999 <span>/month</span></div>
-                <ul class="package-features">
-                    <li>Unlimited high-speed data</li>
-                    <li>30 days validity</li>
-                    <li>All networks</li>
-                    <li>24/7 premium support</li>
-                    <li>Unlimited streaming</li>
-                    <li>Free router included</li>
-                    <li>Priority bandwidth</li>
-                </ul>
-                <button class="select-button">SELECT PLAN</button>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>© 2024 STARNET KENYA. All rights reserved. | Affordable Internet for Everyone</p>
+        <div class="inquiry">
+            <p>Need help? Contact our support team:</p>
+           
+            <p style="margin-top: 10px;">through email </p>
+            <a href="mailto:help.starnet2@gmail.com" class="email">email us</a>
         </div>
     </div>
-
-    <div class="loading" id="loading">
-        <div>Redirecting to Payment...</div>
+    
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Redirecting to Payment</div>
+    </div>
+    
+    <!-- Toast notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Redirecting to payment page...</span>
     </div>
 
     <script>
-        // Add click event to all package cards and buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const packageCards = document.querySelectorAll('.package-card');
-            const selectButtons = document.querySelectorAll('.select-button');
-            const loading = document.getElementById('loading');
-
-            function redirectToPayment(packageName, price) {
-                // Show loading
-                loading.classList.add('show');
-                
-                // Simulate a brief loading period for better UX
-                setTimeout(() => {
-                    // Redirect to the payment link with package details
-                    const paymentUrl = `https://lipia-online.vercel.app/link/Starnet%20purchase?package=${encodeURIComponent(packageName)}&price=${price}`;
-                    window.location.href = paymentUrl;
-                }, 1000);
-            }
-
-            // Add click event to package cards
-            packageCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    // Don't trigger if clicking the button (to avoid double trigger)
-                    if (!e.target.classList.contains('select-button')) {
-                        const packageName = this.getAttribute('data-package');
-                        const price = this.getAttribute('data-price');
-                        redirectToPayment(packageName, price);
-                    }
-                });
-            });
-
-            // Add click event to select buttons
-            selectButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent triggering the card click
-                    const card = this.closest('.package-card');
-                    const packageName = card.getAttribute('data-package');
-                    const price = card.getAttribute('data-price');
-                    redirectToPayment(packageName, price);
-                });
-            });
-
-            // Add keyboard support for accessibility
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    const focusedElement = document.activeElement;
-                    if (focusedElement.classList.contains('package-card') || 
-                        focusedElement.classList.contains('select-button')) {
-                        focusedElement.click();
-                    }
-                }
-            });
-        });
-
-        // Add some interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.package-card');
+        // Redirect to payment page
+        function redirectToPayment(packageName, price) {
+            // Show loading overlay
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.style.display = 'flex';
             
-            cards.forEach((card, index) => {
-                // Add staggered animation
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
+            // Show toast notification
+            showToast();
+            
+            // Redirect to payment link after a short delay
+            setTimeout(() => {
+                const paymentUrl = `https://lipia-online.vercel.app/link/Starnet%20purchase?package=${encodeURIComponent(packageName)}&price=${price}`;
+                window.location.href = paymentUrl;
+            }, 1500);
+        }
+        
+        // Show toast notification
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Add animation to package buttons on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.package-btn');
+            buttons.forEach((btn, index) => {
+                btn.style.opacity = '0';
+                btn.style.transform = 'translateY(20px)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'all 0.6s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 200);
+                    btn.style.transition = 'all 0.5s ease';
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'translateY(0)';
+                }, index * 100);
             });
         });
     </script>
